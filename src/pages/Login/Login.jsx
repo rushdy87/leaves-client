@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
-import { Input } from '../../components';
+import { Input, Button } from '../../components';
+import { AuthContext } from '../../context/auth-context';
 
 import './Login.scss';
-import Button from '../../components/Button/Button';
 
 const Login = () => {
   const [userData, setUserData] = useState({ username: '', password: '' });
 
+  const { error, setError, login } = useContext(AuthContext);
+
   const handelUserDataChange = (event) => {
+    setError('');
     setUserData((prevState) => {
       return { ...prevState, [event.target.name]: event.target.value };
     });
@@ -16,7 +19,8 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(userData);
+    login(userData.username, userData.password);
+    setUserData({ username: '', password: '' });
   };
 
   return (
@@ -44,6 +48,8 @@ const Login = () => {
               value={userData.password}
             />
           </div>
+
+          {error && <span className='login-error'>{error}</span>}
 
           <Button
             className='primary'

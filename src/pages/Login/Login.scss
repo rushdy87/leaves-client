@@ -21,6 +21,7 @@
     justify-content: center;
 
     @include breakpoint(md) {
+      width: 400px;
       border: 2px solid $dark;
       border-radius: $borderRadius;
       background-color: rgba($primary, 0.1);
@@ -28,6 +29,10 @@
 
     .input-field {
       margin: 20px 50px;
+    }
+
+    .login-error {
+      color: $danger;
     }
 
     button {
