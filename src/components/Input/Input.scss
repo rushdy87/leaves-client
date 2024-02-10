@@ -1,0 +1,82 @@
+@import '../../styles/variables.scss';
+
+.input-wrapper {
+  position: relative;
+  margin-top: 30px; // To create space for floating inputs
+  margin-inline: auto;
+  max-width: 150px;
+  margin-right: 0;
+}
+
+.input {
+  font-size: 1.2em;
+  width: 100%;
+  padding: 8px 0;
+  padding-right: 30px;
+  color: $dark;
+  border: none;
+  border-bottom: 1px solid rgba($secondary, 0.6);
+  transition: border-color 250ms;
+  background-color: transparent;
+
+  &:focus {
+    outline: none;
+    border-bottom-color: #777;
+  }
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  // Hide Safari's autofill button
+  &::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+  }
+}
+
+.label {
+  font-size: 1.2em;
+  position: absolute;
+  top: 8px;
+  right: 0;
+  color: $dark;
+  pointer-events: none;
+  transform-origin: right center;
+  transition: transform 250ms;
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  transform: translateY(-100%) scale(0.75);
+}
+
+.clear {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  top: 50%;
+  right: -9px; // To visually align with inputs right edge
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  color: #777;
+  transition: color 250ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover,
+  &:focus {
+    color: #333;
+  }
+}
+
+.input:placeholder-shown + .label + .clear {
+  display: none;
+}
