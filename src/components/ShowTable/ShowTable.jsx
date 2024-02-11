@@ -11,7 +11,7 @@ const ShowTable = ({ data = [], columnsNames }) => {
     <th key={col}>{columnsNames[col]}</th>
   ));
 
-  const renderRow = (item) => (
+  const renderRows = data.map((item) => (
     <tr key={item.id}>
       {columns.map((col, index) => (
         <td key={`${col}${index}`}>{item[col]}</td>
@@ -19,9 +19,7 @@ const ShowTable = ({ data = [], columnsNames }) => {
       <td>E</td>
       <td>D</td>
     </tr>
-  );
-
-  const renderRows = data.map(renderRow);
+  ));
 
   return (
     <div className='table-container'>

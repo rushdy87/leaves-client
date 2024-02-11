@@ -36,13 +36,16 @@
       }
     }
     tbody {
-      td {
-        cursor: pointer;
-      }
+      tr {
+        height: 40px;
+        &:hover {
+          background-color: rgba($primary, 0.1);
+          border: 1px solid #0f2167;
+        }
 
-      tr:hover {
-        background-color: rgba($secondary, 0.1);
-        border: 1px solid #0f2167;
+        td {
+          cursor: pointer;
+        }
       }
     }
   }
