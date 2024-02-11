@@ -10,7 +10,13 @@ export const AuthContext = createContext({
 });
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    userId: 2,
+    username: 'user1',
+    role: '2',
+    token:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiO…TM1fQ.Voec3bRledmItd8mDceu98d7wqIsqiVAgIeIH8q1vg4',
+  });
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 

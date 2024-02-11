@@ -8,11 +8,10 @@ import {
 
 import Login from './pages/Login/Login';
 import { AuthContext } from './context/auth-context';
+import { Navbar } from './components';
 
 function App() {
   const { user } = useContext(AuthContext);
-
-  console.log(user);
 
   const renderRoutes = user ? (
     <Routes>
@@ -26,7 +25,12 @@ function App() {
     </Routes>
   );
 
-  return <Router>{renderRoutes}</Router>;
+  return (
+    <Router>
+      <Navbar />
+      {renderRoutes}
+    </Router>
+  );
 }
 
 export default App;
