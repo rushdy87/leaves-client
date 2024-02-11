@@ -6,7 +6,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import Login from './pages/Login/Login';
+import { Login, Employees } from './pages';
 import { AuthContext } from './context/auth-context';
 import { Navbar } from './components';
 
@@ -16,6 +16,7 @@ function App() {
   const renderRoutes = user ? (
     <Routes>
       <Route path='/' element={<h1>Hi there</h1>} />
+      <Route path='/employees' element={<Employees />} />
       <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   ) : (

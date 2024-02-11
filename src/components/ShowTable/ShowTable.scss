@@ -1,0 +1,49 @@
+@import '../../styles/variables.scss';
+
+.table-container {
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px auto;
+    font-size: 1em;
+    min-width: 370px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+    @include breakpoint(md) {
+      font-size: 1.2em;
+      margin: 25px auto;
+      width: 70%;
+    }
+    thead {
+      tr {
+        background-color: rgba($primary, 0.9);
+        color: $light;
+        text-align: center;
+
+        th {
+          padding: 10px;
+        }
+      }
+    }
+    th,
+    td {
+      text-align: center;
+      padding: 12px 5px;
+      border-bottom: 1px solid $dark;
+
+      @include breakpoint(md) {
+        padding: 2px 15px;
+        border: none;
+      }
+    }
+    tbody {
+      td {
+        cursor: pointer;
+      }
+
+      tr:hover {
+        background-color: rgba($secondary, 0.1);
+        border: 1px solid #0f2167;
+      }
+    }
+  }
+}
