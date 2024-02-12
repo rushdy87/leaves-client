@@ -1,4 +1,5 @@
-import { ShowTable } from '../../components';
+import { useEffect, useState } from 'react';
+import { Search, ShowTable } from '../../components';
 import './Employees.scss';
 
 const data = [
@@ -24,14 +25,44 @@ const columnsNames = {
 };
 
 const Employees = () => {
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    setEmployees(data);
+  }, []);
+
+  const onEmployeesChange = (name, record_number) => {
+    if (record_number) {
+      const updatedData = data.filter(
+        (employee) => employee.record_number === +record_number
+      );
+      setEmployees(updatedData);
+    }
+    if (name !== '') {
+      const updatedData = data.filter((employee) =>
+        employee.name.includes(name)
+      );
+      setEmployees(updatedData);
+    }
+  };
+
+  const resetSearching = () => {
+    setEmployees(data);
+  };
+
   return (
     <div className='employees-page-container'>
-      <div className='employees-search'>This is Search component..</div>
+      <div className='employees-search'>
+        <Search
+          onEmployeesChange={onEmployeesChange}
+          resetSearching={resetSearching}
+        />
+      </div>
       <div className='employees-add-action'>
         This is button to add an employee, her we will use modal
       </div>
       <div className='employees-show-table'>
-        <ShowTable data={data} columnsNames={columnsNames} />
+        <ShowTable data={employees} columnsNames={columnsNames} />
       </div>
     </div>
   );

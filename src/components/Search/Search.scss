@@ -1,0 +1,36 @@
+@import '../../styles/variables.scss';
+.search-container {
+  background-color: rgba($primary, 0.1);
+  // min-width: 370px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba($primary, 0.6);
+  border-radius: $borderRadius;
+
+  @include breakpoint(md) {
+    margin: 10px 40px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .search-inputs {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      gap: 40px;
+      margin: 20px auto;
+    }
+
+    .search-actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px auto;
+    }
+  }
+}

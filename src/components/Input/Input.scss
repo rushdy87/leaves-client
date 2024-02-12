@@ -28,6 +28,18 @@
     color: transparent;
   }
 
+  // Chrome, Safari, Edge, Opera
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  // Firefox
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+
   // Hide Safari's autofill button
   &::-webkit-contacts-auto-fill-button {
     visibility: hidden;
