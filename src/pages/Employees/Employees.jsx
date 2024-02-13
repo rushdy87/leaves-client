@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Search, ShowTable } from '../../components';
+import {
+  Search,
+  ShowTable,
+  Modal,
+  AddEmployeeForm,
+  Button,
+} from '../../components';
 import './Employees.scss';
 
 const data = [
@@ -26,6 +32,7 @@ const columnsNames = {
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setEmployees(data);
@@ -50,21 +57,36 @@ const Employees = () => {
     setEmployees(data);
   };
 
+  const openModalHandler = (doc) => {
+    setIsModalOpen(true);
+  };
+
+  const closeModalHandler = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className='employees-page-container'>
-      <div className='employees-search'>
-        <Search
-          onEmployeesChange={onEmployeesChange}
-          resetSearching={resetSearching}
-        />
+    <>
+      {isModalOpen && (
+        <Modal closeOverlay={closeModalHandler}>
+          {<AddEmployeeForm editMode />}
+        </Modal>
+      )}
+      <div className='employees-page-container'>
+        <div className='employees-search'>
+          <Search
+            onEmployeesChange={onEmployeesChange}
+            resetSearching={resetSearching}
+          />
+        </div>
+        <div className='employees-add-action'>
+          <Button onClick={openModalHandler}>إضافة موظف جديد</Button>
+        </div>
+        <div className='employees-show-table'>
+          <ShowTable data={employees} columnsNames={columnsNames} />
+        </div>
       </div>
-      <div className='employees-add-action'>
-        This is button to add an employee, her we will use modal
-      </div>
-      <div className='employees-show-table'>
-        <ShowTable data={employees} columnsNames={columnsNames} />
-      </div>
-    </div>
+    </>
   );
 };
 

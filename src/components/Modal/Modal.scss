@@ -1,0 +1,32 @@
+@import '../../styles/variables.scss';
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($dark, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-content {
+    position: relative;
+    max-width: 85vw;
+    padding: 2px;
+    border: 1px solid #000;
+    border-radius: $borderRadius;
+    background-color: $light;
+
+    .close-btn {
+      position: absolute;
+      border-radius: 50%;
+      width: 20px;
+      top: 0.5rem;
+      left: 0.5rem;
+      color: gray;
+    }
+  }
+}
