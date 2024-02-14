@@ -13,9 +13,26 @@ const LeaveRequest = () => {
     startingDate: new Date().toISOString().slice(0, 10),
     duration: 1,
   });
+
+  const onFormDataChange = (event) => {
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData);
+  };
+
   return (
     <div>
-      <LeaveForm formData={formData} />
+      <LeaveForm
+        formData={formData}
+        onFormDataChange={onFormDataChange}
+        onFormSubmit={onFormSubmit}
+      />
     </div>
   );
 };

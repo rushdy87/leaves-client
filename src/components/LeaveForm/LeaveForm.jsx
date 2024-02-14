@@ -1,19 +1,31 @@
 import { Input, Button } from '..';
+
 import './LeaveForm.scss';
 
-const LeaveForm = ({ formData }) => {
+const LeaveForm = ({ formData, onFormDataChange, onFormSubmit }) => {
   return (
     <div className='leave-form-container'>
       <h1 className='form-requiest_title'>استمارة طلب اجازة اعتيادية</h1>
-      <form>
+      <form onSubmit={onFormSubmit}>
         <div className='date-and-type'>
           <div className='leave-form-input'>
             <label htmlFor='requestDate'>تاريخ الاجازة</label>
-            <input type='date' name='requestDate' id='requestDate' />
+            <input
+              type='date'
+              name='requestDate'
+              id='requestDate'
+              value={formData.requestDate}
+              onChange={onFormDataChange}
+            />
           </div>
           <div className='leave-form-input'>
-            <label htmlFor=''>نوع الاجازة</label>
-            <select id='leaveType' name='leaveType' value='regular'>
+            <label htmlFor='leaveType'>نوع الاجازة</label>
+            <select
+              id='leaveType'
+              name='leaveType'
+              value={formData.leaveType}
+              onChange={onFormDataChange}
+            >
               <option value='regular'>اجازة اعتيادية</option>
               <option value='gatebass'>اجازة زمنية خاصة</option>
             </select>
@@ -25,41 +37,47 @@ const LeaveForm = ({ formData }) => {
               type='text'
               name='name'
               label='الاسم'
-              // value={employeeData.name}
-              // handleChange={handleChange}
+              value={formData.name}
+              handleChange={onFormDataChange}
             />
           </div>
           <div className='leave-form-input'>
             <Input
               type='number'
-              name='record_number'
+              name='recordNumber'
               label='رقم الحاسبة'
-              // value={employeeData.record_number}
-              // handleChange={handleChange}
+              value={formData.recordNumber}
+              handleChange={onFormDataChange}
             />
           </div>
           <div className='leave-form-input'>
             <Input
               type='text'
-              name='job_title'
+              name='jobTitle'
               label='العنوان الوظيفي'
-              // value={employeeData.job_title}
-              // handleChange={handleChange}
+              value={formData.jobTitle}
+              handleChange={onFormDataChange}
             />
           </div>
         </div>
         <div className='starting-and-duration'>
           <div className='leave-form-input'>
             <label htmlFor='startingDate'>من تاريخ: </label>
-            <input type='date' name='startingDate' id='startingDate' />
+            <input
+              type='date'
+              name='startingDate'
+              id='startingDate'
+              value={formData.startingDate}
+              onChange={onFormDataChange}
+            />
           </div>
           <div className='leave-form-input'>
             <label htmlFor='duration'>المدة</label>
             <select
               name='duration'
               id='duration'
-              // value={formData.duration.toString()} // Convert to string
-              // onChange={handleChange}
+              value={formData.duration.toString()} // Convert to string
+              onChange={onFormDataChange}
             >
               {Array.from({ length: 30 }, (_, i) => (
                 <option key={i + 1} value={(i + 1).toString()}>
