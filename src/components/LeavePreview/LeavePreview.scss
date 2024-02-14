@@ -1,0 +1,109 @@
+@import '../../styles/variables.scss';
+
+.leave-preview-wrapper {
+  height: 95vw;
+  overflow: scroll;
+
+  @include breakpoint(md) {
+    height: 70vh;
+  }
+}
+.leave-preview {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  min-width: 300px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-family: 'Times New Roman', Times, serif;
+
+  @include breakpoint(md) {
+    width: 148.5mm;
+    // height: 210mm;
+  }
+
+  .refinery_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+  }
+  .leave_title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  }
+  .employee_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .employee_info_right,
+    .employee_info_left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 80px;
+
+      .employee_info_name,
+      .employee_info_department,
+      .employee_info_request_date,
+      .employee_info_record_number,
+      .employee_info_job_title {
+        display: flex;
+        flex-direction: row;
+        gap: 3px;
+      }
+    }
+  }
+  .leave_duration,
+  .leave_starting_date {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+  }
+  .leave_employee_signature {
+    text-align: left;
+  }
+  .leave_acception_signature {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+
+  .financial_department {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .financial_signature {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 60px;
+    }
+  }
+
+  // genral
+  .bold {
+    font-weight: 700;
+  }
+
+  .leave_hr {
+    width: 100%;
+    height: 1px;
+    border: 1px solid #000000;
+  }
+  .blank {
+    padding: 5px 40px;
+  }
+}

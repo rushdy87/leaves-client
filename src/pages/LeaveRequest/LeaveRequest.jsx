@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { LeaveForm } from '../../components';
+import { LeaveForm, LeavePreview, Modal } from '../../components';
 
 const LeaveRequest = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ const LeaveRequest = () => {
     startingDate: new Date().toISOString().slice(0, 10),
     duration: 1,
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onFormDataChange = (event) => {
     setFormData((prev) => ({
@@ -23,11 +24,21 @@ const LeaveRequest = () => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
+    setIsModalOpen(true);
     console.log(formData);
+  };
+
+  const closeModalHandler = () => {
+    setIsModalOpen(false);
   };
 
   return (
     <div>
+      {isModalOpen && (
+        <Modal closeOverlay={closeModalHandler}>
+          <LeavePreview leave={formData} />
+        </Modal>
+      )}
       <LeaveForm
         formData={formData}
         onFormDataChange={onFormDataChange}
@@ -38,11 +49,3 @@ const LeaveRequest = () => {
 };
 
 export default LeaveRequest;
-
-// "employee_id": 2, //name, record_number, job_title
-// "request_date": "2024-02-06",
-// "leave_type": "regular",
-/*
-		"starting_date": "2024-02-06",
-		"duration": 1,
-*/
