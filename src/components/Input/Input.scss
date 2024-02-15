@@ -4,7 +4,7 @@
   position: relative;
   margin-top: 30px; // To create space for floating inputs
   margin-inline: auto;
-  max-width: 150px;
+  max-width: 250px;
   margin-right: 0;
 }
 
@@ -38,6 +38,7 @@
   // Firefox
   &[type='number'] {
     -moz-appearance: textfield;
+    max-width: 100px;
   }
 
   // Hide Safari's autofill button
@@ -45,6 +46,7 @@
     visibility: hidden;
     pointer-events: none;
     position: absolute;
+    max-width: 100px;
   }
 }
 
