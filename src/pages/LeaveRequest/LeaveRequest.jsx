@@ -1,6 +1,12 @@
 import { useState } from 'react';
 
-import { LeaveForm, LeavePreview, Modal } from '../../components';
+import {
+  ErrorMessagesBox,
+  LeaveForm,
+  LeavePreview,
+  Modal,
+} from '../../components';
+import { cheackLeaveValidity } from '../../utils';
 
 const LeaveRequest = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +20,7 @@ const LeaveRequest = () => {
     duration: 1,
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isValiedData, setIsValiedData] = useState(true);
 
   const onFormDataChange = (event) => {
     setFormData((prev) => ({
@@ -25,6 +32,7 @@ const LeaveRequest = () => {
   const onFormSubmit = (event) => {
     event.preventDefault();
     setIsModalOpen(true);
+    setIsValiedData(cheackLeaveValidity(formData));
     console.log(formData);
   };
 
@@ -36,7 +44,16 @@ const LeaveRequest = () => {
     <div>
       {isModalOpen && (
         <Modal closeOverlay={closeModalHandler}>
-          <LeavePreview leave={formData} />
+          {isValiedData ? (
+            <LeavePreview leave={formData} />
+          ) : (
+            <ErrorMessagesBox
+              title='نقص بيانات'
+              body='الرجاء ملئ جميع الحقول المطلوبة..'
+              actiton={closeModalHandler}
+              actitonLable='عودة'
+            />
+          )}
         </Modal>
       )}
       <LeaveForm

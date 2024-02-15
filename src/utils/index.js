@@ -123,3 +123,12 @@ export const dayInWritingMode = (day) => {
   ];
   return days[day - 1].text;
 };
+
+export const cheackLeaveValidity = (leave) => {
+  for (const key in leave) {
+    if (!leave[key]) {
+      return false;
+    }
+  }
+  return true;
+};

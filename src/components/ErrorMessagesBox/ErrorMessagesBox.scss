@@ -1,0 +1,22 @@
+.error-messages-box {
+  width: 250px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 10px;
+
+  .error-message-title {
+    align-self: flex-start;
+    justify-self: flex-start;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .error-message-body {
+    align-self: flex-start;
+    font-size: 1.2rem;
+  }
+}
