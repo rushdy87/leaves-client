@@ -47,7 +47,7 @@ const Navbar = () => {
             <Link to='/leave-request'>طلب اجازة</Link>
           </li>
           <li>
-            <Link to='/print-leave'>طباعة اجازة</Link>
+            <Link to='/print-leaves'>طباعة اجازة</Link>
           </li>
           {user.role === '1' && (
             <>
