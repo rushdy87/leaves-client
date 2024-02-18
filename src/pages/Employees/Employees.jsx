@@ -83,7 +83,14 @@ const Employees = () => {
           <Button onClick={openModalHandler}>إضافة موظف جديد</Button>
         </div>
         <div className='employees-show-table'>
-          <ShowTable data={employees} columnsNames={columnsNames} />
+          <ShowTable
+            data={employees}
+            columnsNames={columnsNames}
+            actions={[
+              { actionName: 'edit', actionIcon: 'E', actionFunc: () => null },
+              { actionName: 'delete', actionIcon: 'D', actionFunc: () => null },
+            ]}
+          />
         </div>
       </div>
     </>

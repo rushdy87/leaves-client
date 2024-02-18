@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button, ShowTable } from '../../components';
 
@@ -7,6 +7,11 @@ import './PrintLeaves.scss';
 const PrintLeaves = () => {
   const [leavesType, setLeavesType] = useState('regular');
   const [leaves, setLeaves] = useState(data);
+
+  useEffect(() => {
+    const renderdLeaves = data.filter((l) => l.leave_type === leavesType);
+    setLeaves(renderdLeaves);
+  }, [leavesType]);
 
   return (
     <div className='print-leaves-container'>
@@ -39,6 +44,10 @@ const PrintLeaves = () => {
             starting_date: 'من تاريخ',
             duration: 'المدة',
           }}
+          actions={[
+            { actionName: 'print', actionIcon: 'P', actionFunc: () => null },
+            { actionName: 'delete', actionIcon: 'D', actionFunc: () => null },
+          ]}
         />
       </div>
     </div>
