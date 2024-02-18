@@ -6,7 +6,13 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import { Login, Employees, LeaveRequest, PrintLeaves } from './pages';
+import {
+  Login,
+  Employees,
+  LeaveRequest,
+  PrintLeaves,
+  Acception,
+} from './pages';
 import { AuthContext } from './context/auth-context';
 import { Navbar } from './components';
 
@@ -19,6 +25,7 @@ function App() {
       <Route path='/employees' element={<Employees />} />
       <Route path='/leave-request' element={<LeaveRequest />} />
       <Route path='/print-leaves' element={<PrintLeaves />} />
+      <Route path='/acception' element={<Acception />} />
       <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   ) : (

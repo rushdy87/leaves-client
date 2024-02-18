@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+.acception-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px 0;
+
+  @include breakpoint(md) {
+    margin: 15px auto;
+  }
+
+  .accept-all {
+  }
+}

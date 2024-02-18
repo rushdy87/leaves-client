@@ -13,7 +13,7 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({
     userId: 2,
     username: 'user1',
-    role: '2',
+    role: '1',
     token:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiO…TM1fQ.Voec3bRledmItd8mDceu98d7wqIsqiVAgIeIH8q1vg4',
   });
