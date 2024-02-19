@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { ShowTable, Modal, Button } from '../../components';
+import { ShowTable, Modal, Button, AddUserForm } from '../../components';
 
 import './Users.scss';
 
@@ -23,7 +23,9 @@ const Users = () => {
   return (
     <>
       {isModalOpen && (
-        <Modal closeOverlay={closeModalHandler}>{<h1>Hi there</h1>}</Modal>
+        <Modal closeOverlay={closeModalHandler}>
+          {<AddUserForm closeOverlay={closeModalHandler} />}
+        </Modal>
       )}
       <div className='users-page-container'>
         <div className='users-add-action'>

@@ -1,0 +1,66 @@
+@import '../../styles/variables.scss';
+
+.add-user-container {
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 40px;
+  gap: 10px;
+
+  .add-user-header {
+    align-self: center;
+    background-color: rgba($primary, 0.2);
+    border-radius: $borderRadius;
+    padding: 5px;
+    h2 {
+      font-size: 1.4em;
+      text-align: center;
+    }
+    h3 {
+      font-size: 1.2em;
+      text-align: center;
+    }
+  }
+  form {
+    .add-user-form {
+      .name-role-inputs,
+      .username-password-inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+
+        @include breakpoint(md) {
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: space-evenly;
+        }
+
+        .add-user-input {
+          width: 250px;
+          margin: auto;
+        }
+
+        select {
+          font-size: 1.2em;
+          width: 100px;
+          padding: 8px 0;
+          margin: 0;
+          padding-right: 30px;
+          color: $dark;
+          border: 1px solid rgba($primary, 0.2);
+          border-radius: $borderRadius;
+          margin-top: 16px;
+        }
+      }
+    }
+    .add-user-actions {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+}
