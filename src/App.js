@@ -12,6 +12,7 @@ import {
   LeaveRequest,
   PrintLeaves,
   Acception,
+  Users,
 } from './pages';
 import { AuthContext } from './context/auth-context';
 import { Navbar } from './components';
@@ -26,6 +27,7 @@ function App() {
       <Route path='/leave-request' element={<LeaveRequest />} />
       <Route path='/print-leaves' element={<PrintLeaves />} />
       <Route path='/acception' element={<Acception />} />
+      <Route path='/users' element={<Users />} />
       <Route path='*' element={<Navigate to='/' replace />} />
     </Routes>
   ) : (
