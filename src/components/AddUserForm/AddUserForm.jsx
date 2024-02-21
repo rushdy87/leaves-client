@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Input, Button } from '..';
 import './AddUserForm.scss';
+import { addUser } from '../../api/users-api';
+import { AuthContext } from '../../context/auth-context';
 
 const defaultValue = {
   name: '',
@@ -12,6 +14,11 @@ const defaultValue = {
 const AddUserForm = ({ editMode, user, closeOverlay }) => {
   const [userData, setUserData] = useState(user ? user : defaultValue);
 
+  const {
+    user: { token },
+    setError,
+  } = useContext(AuthContext);
+
   const handleChange = (event) => {
     setUserData((prev) => ({
       ...prev,
@@ -19,9 +26,18 @@ const AddUserForm = ({ editMode, user, closeOverlay }) => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(userData);
+    try {
+      await addUser(userData, token);
+    } catch (error) {
+      if (error.response) {
+        setError(error.response.data.message);
+      } else {
+        setError('An unexpected error occurred.');
+      }
+    }
+    closeOverlay();
   };
 
   const handleCancelling = (event) => {
