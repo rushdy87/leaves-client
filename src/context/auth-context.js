@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import axios from 'axios';
+import { signin } from '../api/users-api';
 
 export const AuthContext = createContext({
   user: null,
@@ -10,13 +10,16 @@ export const AuthContext = createContext({
 });
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    userId: 2,
-    username: 'user1',
-    role: '1',
-    token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiO…TM1fQ.Voec3bRledmItd8mDceu98d7wqIsqiVAgIeIH8q1vg4',
-  });
+  const [user, setUser] = useState(
+    null
+    // {
+    //   userId: 2,
+    //   username: 'user1',
+    //   role: '1',
+    //   token:
+    //     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiO…TM1fQ.Voec3bRledmItd8mDceu98d7wqIsqiVAgIeIH8q1vg4',
+    // }
+  );
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -24,12 +27,9 @@ export const AuthContextProvider = ({ children }) => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post(
-        'http://localhost:3030/api/users/login',
-        { username, password }
-      );
+      const response = await signin(username, password);
 
-      setUser(response.data);
+      setUser(response);
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);

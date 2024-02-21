@@ -49,7 +49,7 @@ const Navbar = () => {
           <li>
             <Link to='/print-leaves'>طباعة اجازة</Link>
           </li>
-          {user.role === '1' && (
+          {user?.role === '1' && (
             <>
               <li>
                 <Link to='/acception'>الموافقة على الاجازة</Link>
