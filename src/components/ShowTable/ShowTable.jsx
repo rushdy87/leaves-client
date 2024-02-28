@@ -21,7 +21,13 @@ const ShowTable = ({ data = [], columnsNames, actions }) => {
         <td key={`${col}${index}`}>{item[col]}</td>
       ))}
       {actions.map((action) => (
-        <td key={action.actionName}>{action.actionIcon}</td>
+        <td
+          key={action.actionName}
+          className='action-td'
+          onClick={action.actionFunc}
+        >
+          {action.actionIcon}
+        </td>
       ))}
     </tr>
   ));
