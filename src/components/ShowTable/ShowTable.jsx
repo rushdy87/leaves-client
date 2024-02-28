@@ -15,22 +15,24 @@ const ShowTable = ({ data = [], columnsNames, actions }) => {
     return [...titles, ...actionTitles];
   };
 
-  const renderRows = data.map((item) => (
-    <tr key={item.id}>
-      {columns.map((col, index) => (
-        <td key={`${col}${index}`}>{item[col]}</td>
-      ))}
-      {actions.map((action) => (
-        <td
-          key={action.actionName}
-          className='action-td'
-          onClick={action.actionFunc}
-        >
-          {action.actionIcon}
-        </td>
-      ))}
-    </tr>
-  ));
+  const renderRows = data.map((item) => {
+    return (
+      <tr key={item.id}>
+        {columns.map((col, index) => (
+          <td key={`${col}${index}`}>{item[col]}</td>
+        ))}
+        {actions.map((action) => (
+          <td
+            key={action.actionName}
+            className='action-td'
+            onClick={() => action.actionFunc(item)}
+          >
+            {action.actionIcon}
+          </td>
+        ))}
+      </tr>
+    );
+  });
 
   return (
     <div className='table-container'>

@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { Input, Button } from '..';
 import './AddUserForm.scss';
-import { addUser } from '../../api/users-api';
+import { addUser, updateUser } from '../../api/users-api';
 import { AuthContext } from '../../context/auth-context';
 
 const defaultValue = {
@@ -28,8 +28,13 @@ const AddUserForm = ({ editMode, user, closeOverlay }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(userData);
     try {
-      await addUser(userData, token);
+      if (editMode) {
+        await updateUser(userData, token);
+      } else {
+        await addUser(userData, token);
+      }
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);

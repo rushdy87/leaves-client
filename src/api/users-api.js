@@ -52,7 +52,7 @@ export const addUser = async (user, token) => {
 
 export const updateUser = async (user, token) => {
   try {
-    const url = `http://localhost:3030/api/users/${user.userId}`;
+    const url = `http://localhost:3030/api/users/${user.id}`;
     const { data } = await axios.put(
       url,
       { ...user },

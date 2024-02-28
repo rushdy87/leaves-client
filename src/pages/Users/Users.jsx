@@ -9,6 +9,8 @@ import { getAllUsers } from '../../api/users-api';
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const {
     user: { token },
@@ -28,15 +30,33 @@ const Users = () => {
   };
 
   const closeModalHandler = () => {
+    setEditMode(false);
     setIsModalOpen(false);
     getUsers();
+  };
+
+  const handleUserEdite = async (user) => {
+    setEditMode(true);
+    setCurrentUser({
+      id: user.id,
+      name: user.name,
+      username: user.username,
+      role: user.role,
+    });
+    setIsModalOpen(true);
   };
 
   return (
     <>
       {isModalOpen && (
         <Modal closeOverlay={closeModalHandler}>
-          {<AddUserForm closeOverlay={closeModalHandler} />}
+          {
+            <AddUserForm
+              editMode={editMode}
+              user={currentUser}
+              closeOverlay={closeModalHandler}
+            />
+          }
         </Modal>
       )}
       <div className='users-page-container'>
@@ -53,7 +73,11 @@ const Users = () => {
               role: 'الصلاحيات',
             }}
             actions={[
-              { actionName: 'edit', actionIcon: 'E', actionFunc: () => null },
+              {
+                actionName: 'edit',
+                actionIcon: 'E',
+                actionFunc: handleUserEdite,
+              },
               { actionName: 'delete', actionIcon: 'D', actionFunc: () => null },
             ]}
           />
